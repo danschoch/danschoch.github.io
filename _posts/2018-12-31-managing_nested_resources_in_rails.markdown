@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Managing Nested Resources in Rails"
-date:       2019-01-01 01:24:08 +0000
+date:       2018-12-31 20:24:09 -0500
 permalink:  managing_nested_resources_in_rails
 ---
 
@@ -75,14 +75,14 @@ resources :projects, shallow: true do
 
 Adding the shallow option to the top level applies it to each line below it, which meant that ultimately my routes for the Comment model, which could have been EXTREMELY messy, looked like this:
 ```
-         task_comments      GET    /tasks/:task_id/comments(.:format)                                            comments#index
-                                                POST   /tasks/:task_id/comments(.:format)                                          comments#create
- new_task_comment      GET    /tasks/:task_id/comments/new(.:format)                                  comments#new
-            edit_comment       GET    /comments/:id/edit(.:format)                                                          comments#edit
-                       comment      GET    /comments/:id(.:format)                                                                   comments#show
-                                                 PATCH  /comments/:id(.:format)                                                               comments#update
-                                                 PUT    /comments/:id(.:format)                                                                   comments#update
-                                                 DELETE /comments/:id(.:format)                                                              comments#destroy
+ task_comments GET    /tasks/:task_id/comments(.:format)                                                       comments#index
+                          POST   /tasks/:task_id/comments(.:format)                                                       comments#create
+         new_task_comment GET    /tasks/:task_id/comments/new(.:format)                                                   comments#new
+             edit_comment GET    /comments/:id/edit(.:format)                                                             comments#edit
+                  comment GET    /comments/:id(.:format)                                                                  comments#show
+                          PATCH  /comments/:id(.:format)                                                                  comments#update
+                          PUT    /comments/:id(.:format)                                                                  comments#update
+                          DELETE /comments/:id(.:format)                                                                  comments#destroy
 ```
 
 Very managable, yet the way the routes are construed in the `routes.rb` file is also very clear. 
