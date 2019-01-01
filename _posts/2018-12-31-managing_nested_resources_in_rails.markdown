@@ -76,8 +76,7 @@ resources :projects, shallow: true do
 Adding the shallow option to the top level applies it to each line below it, which meant that ultimately my routes for the Comment model, which could have been EXTREMELY messy, looked like this:
 ```
  task_comments GET    /tasks/:task_id/comments(.:format)                                                       comments#index
-                          POST   /tasks/:task_id/comments(.:format)                                                       comments#create
-         new_task_comment GET    /tasks/:task_id/comments/new(.:format)                                                   comments#new
+                                   POST   /tasks/:task_id/comments(.:format)                                                       comments#create new_task_comment GET    /tasks/:task_id/comments/new(.:format)                                                   comments#new
              edit_comment GET    /comments/:id/edit(.:format)                                                             comments#edit
                   comment GET    /comments/:id(.:format)                                                                  comments#show
                           PATCH  /comments/:id(.:format)                                                                  comments#update
